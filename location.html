@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위치기반서비스 이용약관 — iLog / iTrace</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #007aff;
+        }
+
+        p, li {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .date {
+            text-align: right;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+            color: #555;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="date">최종 수정일: 2026년 3월 18일 · 시행일: 2026년 3월 18일</p>
+        <h1>위치기반서비스 이용약관</h1>
+
+        <section>
+            <h2>제1조 (목적)</h2>
+            <p>본 약관은 이베안도르(이하 "회사")가 제공하는 iLog · iTrace · iLogMobile 위치기반서비스(이하 "서비스")의 이용과 관련하여 회사와 이용자 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+        </section>
+
+        <section>
+            <h2>제2조 (서비스 명칭 및 내용)</h2>
+            <ul>
+                <li><strong>iLog</strong>: Galaxy Watch(Wear OS) 탑재 위치 추적 앱 — GPS/Wi-Fi/기지국 기반 위치를 수집하여 보호자에게 전송</li>
+                <li><strong>iTrace</strong>: 보호자용 모니터링 앱 — 실시간 위치 지도, 이동 경로 이력, 안심존(지오펜스) 알림, SOS 긴급 알림 수신</li>
+                <li><strong>iLogMobile</strong>: 스마트폰에서 iLog와 동일한 위치 전송 기능 수행</li>
+            </ul>
+            <p>주요 기능:</p>
+            <ul>
+                <li>실시간 위치 공유 및 지도 표시</li>
+                <li>이동 경로 이력 조회 (최근 데이터 기준)</li>
+                <li>안심존 설정 및 진입·이탈 알림 (Geofencing)</li>
+                <li>SOS 긴급 신호 발송 및 알림 수신</li>
+                <li>배터리 잔량 및 기기 상태 모니터링</li>
+                <li>위치 수집 주기 원격 제어</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>제3조 (위치정보 수집 방법)</h2>
+            <table>
+                <tr><th>수집 방법</th><th>설명</th></tr>
+                <tr><td>GPS</td><td>위성 신호 기반 정밀 좌표 (실외 환경)</td></tr>
+                <tr><td>Wi-Fi</td><td>주변 무선랜 AP 정보 기반 측위</td></tr>
+                <tr><td>기지국(LBS)</td><td>이동통신 기지국 신호 기반 보조 측위</td></tr>
+                <tr><td>가속도계</td><td>활동 상태(정지/이동) 감지로 수집 주기 자동 조절</td></tr>
+            </table>
+            <p>위치 정보는 기기에서 서버로 HTTPS(TLS 1.2 이상)로 암호화 전송됩니다. 배터리 절약을 위해 정지 상태가 지속될 경우 수집 주기가 자동으로 연장될 수 있습니다.</p>
+        </section>
+
+        <section>
+            <h2>제4조 (위치정보 보유 및 이용기간)</h2>
+            <ul>
+                <li>실시간 위치: 서비스 이용 중 실시간으로 보호자에게 제공되며, 설정된 TTL(기본 30일) 이후 자동 삭제됩니다.</li>
+                <li>이동 경로 이력: 수집 시점으로부터 최대 30일 보관 후 자동 파기</li>
+                <li>서비스 해지 또는 회원 탈퇴 시: 잔여 데이터 즉시 삭제 처리</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>제5조 (이용자의 권리)</h2>
+            <ul>
+                <li><strong>동의 철회</strong>: 언제든지 앱 내 설정 → "위치 공유 중단"으로 위치 수집을 즉시 중단할 수 있습니다.</li>
+                <li><strong>일시 중단</strong>: iLog/iLogMobile에서 추적 서비스를 일시 중지할 수 있습니다.</li>
+                <li><strong>이력 삭제</strong>: iTrace 설정 → "위치 기록 삭제"로 저장된 이력을 직접 삭제할 수 있습니다.</li>
+                <li><strong>열람</strong>: 수집된 본인의 위치 정보를 앱 내 이력 화면에서 확인할 수 있습니다.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>제6조 (보호의무자의 권리)</h2>
+            <p>만 14세 미만 아동 또는 법정대리인의 동의가 필요한 대상을 추적하는 경우, 보호자는 다음 권리를 가집니다.</p>
+            <ul>
+                <li>위치정보 수집·이용·제공에 대한 동의 및 철회</li>
+                <li>수집된 위치정보의 열람·정정·삭제 요청</li>
+                <li>추적 대상 기기 관리 및 연결 해제</li>
+            </ul>
+            <p>보호자 동의는 iTrace 앱의 초대 코드 연결 과정에서 확인됩니다.</p>
+        </section>
+
+        <section>
+            <h2>제7조 (위치정보의 제3자 제공)</h2>
+            <p>회사는 이용자의 위치정보를 원칙적으로 제3자에게 제공하지 않습니다. 단, 다음 경우는 예외입니다.</p>
+            <ul>
+                <li>이용자가 초대 코드를 통해 명시적으로 허용한 보호자에게 위치 공유</li>
+                <li>법령에 의거하거나 수사기관의 적법한 요청이 있는 경우</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>제8조 (서비스 제한 및 책임)</h2>
+            <ul>
+                <li>GPS 음영 지역, 실내, 터널 등 환경에 따라 위치 오차(수 미터~수백 미터)가 발생할 수 있습니다.</li>
+                <li>네트워크 불안정 시 위치 업데이트가 지연될 수 있습니다.</li>
+                <li>위치정보만으로 응급 상황에 대응하는 것을 보증하지 않으며, SOS 기능은 보조 수단입니다.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>제9조 (약관 변경)</h2>
+            <p>회사는 약관을 변경하는 경우 시행 7일 전에 앱 내 공지 또는 이메일로 고지합니다. 변경된 약관에 동의하지 않는 경우 서비스 이용을 중단하고 탈퇴할 수 있습니다.</p>
+        </section>
+
+        <hr>
+        <p style="text-align: center; color: #999;">문의: iveandor@gmail.com</p>
+    </div>
+</body>
+
+</html>
