@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기기 권한 설정 가이드 — iLog / iTrace / iLogMobile</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+
+        h2 {
+            margin-top: 36px;
+            font-size: 20px;
+            color: #007aff;
+        }
+
+        h3 {
+            margin-top: 24px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        p, li {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .date {
+            text-align: right;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+            color: #555;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        /* 플랫폼 배지 */
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .badge-android {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-ios {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .badge-wear {
+            background-color: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        /* 앱 구분 배지 */
+        .badge-child {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        .badge-parent {
+            background-color: #e8eaf6;
+            color: #283593;
+        }
+
+        /* 단계별 안내 */
+        .steps {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+
+        .steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #007aff;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .path {
+            font-family: "SF Mono", "Consolas", "Menlo", monospace;
+            font-size: 13px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            padding: 1px 6px;
+            color: #333;
+        }
+
+        /* 중요 안내 박스 */
+        .notice {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            margin: 16px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .notice strong {
+            color: #e65100;
+        }
+
+        /* OEM 별 추가 안내 */
+        .oem-box {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin: 12px 0;
+        }
+
+        .oem-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .oem-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .oem-box li {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        /* 섹션 구분 */
+        .section-divider {
+            border: 0;
+            border-top: 2px dashed #e0e0e0;
+            margin: 32px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="date">최종 수정일: 2026년 4월 1일</p>
+        <h1>기기 권한 설정 가이드</h1>
+
+        <p>iLog · iLogMobile · iTrace가 정상적으로 동작하려면 기기의 위치·배터리·알림 권한이 올바르게 설정되어야 합니다.
+           특히 <strong>백그라운드 위치 추적</strong>은 설정이 잘못되면 앱 화면이 꺼진 상태에서 수집이 중단될 수 있습니다.</p>
+
+        <div class="notice">
+            <strong>권한 설정은 앱이 업데이트되거나 기기를 초기화하면 초기화될 수 있습니다.</strong><br>
+            문제가 발생하면 아래 설정을 다시 확인해 주세요.
+        </div>
+
+        <!-- ===== iLogMobile Android ===== -->
+        <h2>
+            <span class="badge badge-child">자녀 앱</span>
+            iLogMobile
+            <span class="badge badge-android">Android</span>
+        </h2>
+
+        <p>iLogMobile은 백그라운드에서 지속적으로 위치를 수집하는 앱입니다.
+           아래 설정이 빠지면 화면이 꺼진 후 위치 업데이트가 중단됩니다.</p>
+
+        <h3>위치 권한 — 항상 허용</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span>기기 <span class="path">설정</span> 앱을 엽니다.</span></li>
+            <li><span class="step-num">2</span><span><span class="path">앱</span> (또는 애플리케이션 관리자) 을 선택합니다.</span></li>
+            <li><span class="step-num">3</span><span><span class="path">iLog Mobile</span> 을 찾아 탭합니다.</span></li>
+            <li><span class="step-num">4</span><span><span class="path">권한</span> → <span class="path">위치</span> 를 선택합니다.</span></li>
+            <li><span class="step-num">5</span><span><strong>항상 허용</strong>을 선택합니다. ("앱 사용 중에만"은 백그라운드 추적이 중단됩니다.)</span></li>
+        </ol>
+
+        <h3>배터리 최적화 제외</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span>기기 <span class="path">설정</span> 앱을 엽니다.</span></li>
+            <li><span class="step-num">2</span><span><span class="path">앱</span> → <span class="path">iLog Mobile</span> 을 선택합니다.</span></li>
+            <li><span class="step-num">3</span><span><span class="path">배터리</span> 를 탭합니다.</span></li>
+            <li><span class="step-num">4</span><span><strong>제한 없음</strong>을 선택합니다. (기본값 "최적화"는 위치 수집을 방해합니다.)</span></li>
+        </ol>
+
+        <h3>알림 권한 (Android 13 이상)</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span><span class="path">설정</span> → <span class="path">앱</span> → <span class="path">iLog Mobile</span> → <span class="path">알림</span> 을 선택합니다.</span></li>
+            <li><span class="step-num">2</span><span><strong>알림 허용</strong>을 활성화합니다.</span></li>
+        </ol>
+
+        <div class="notice">
+            위 설정 후에도 백그라운드 추적이 끊기면, 기기 제조사별 추가 설정을 확인해 주세요.
+        </div>
+
+        <div class="oem-box">
+            <h4>삼성 Galaxy (One UI)</h4>
+            <ul>
+                <li><span class="path">설정</span> → <span class="path">배터리</span> → <span class="path">백그라운드 사용 제한</span> → iLog Mobile을 목록에서 제외</li>
+                <li><span class="path">설정</span> → <span class="path">배터리</span> → <span class="path">절전 모드</span> 비활성화 또는 iLog Mobile 제외</li>
+            </ul>
+        </div>
+        <div class="oem-box">
+            <h4>Xiaomi / MIUI · HyperOS</h4>
+            <ul>
+                <li><span class="path">설정</span> → <span class="path">앱</span> → <span class="path">iLog Mobile</span> → <span class="path">배터리 절약</span> → <strong>제한 없음</strong></li>
+                <li><span class="path">설정</span> → <span class="path">앱</span> → <span class="path">iLog Mobile</span> → <span class="path">자동 시작</span> → 활성화</li>
+            </ul>
+        </div>
+        <div class="oem-box">
+            <h4>OPPO / ColorOS · realme UI</h4>
+            <ul>
+                <li><span class="path">설정</span> → <span class="path">배터리</span> → <span class="path">배터리 최적화</span> → iLog Mobile → <strong>최적화 안 함</strong></li>
+                <li><span class="path">설정</span> → <span class="path">앱 관리</span> → <span class="path">iLog Mobile</span> → <span class="path">빠른 동결</span> → 비활성화</li>
+            </ul>
+        </div>
+        <div class="oem-box">
+            <h4>LG · 기타 Android</h4>
+            <ul>
+                <li><span class="path">설정</span> → <span class="path">일반</span> → <span class="path">배터리 및 전원 절약</span> → <span class="path">배터리 사용 최적화</span> → iLog Mobile 제외</li>
+            </ul>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- ===== iLogMobile iOS ===== -->
+        <h2>
+            <span class="badge badge-child">자녀 앱</span>
+            iLogMobile
+            <span class="badge badge-ios">iOS</span>
+        </h2>
+
+        <h3>위치 권한 — 항상</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span>iPhone <span class="path">설정</span> 앱을 엽니다.</span></li>
+            <li><span class="step-num">2</span><span>앱 목록에서 <span class="path">iLog Mobile</span> 을 탭합니다.</span></li>
+            <li><span class="step-num">3</span><span><span class="path">위치</span> 를 탭합니다.</span></li>
+            <li><span class="step-num">4</span><span><strong>항상</strong>을 선택합니다. ("앱 사용 중"을 선택하면 화면이 꺼질 때 GPS가 중단됩니다.)</span></li>
+            <li><span class="step-num">5</span><span><strong>정확한 위치</strong> 토글을 켭니다.</span></li>
+        </ol>
+
+        <h3>백그라운드 앱 새로 고침</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span><span class="path">설정</span> → <span class="path">iLog Mobile</span> 을 탭합니다.</span></li>
+            <li><span class="step-num">2</span><span><strong>백그라운드 앱 새로 고침</strong>을 활성화합니다.</span></li>
+        </ol>
+
+        <div class="notice">
+            저전력 모드(<span class="path">설정 → 배터리 → 저전력 모드</span>)가 켜져 있으면 백그라운드 앱 새로 고침이 자동으로 비활성화됩니다.
+            추적이 필요한 시간에는 저전력 모드를 끄거나 수동으로 다시 활성화해 주세요.
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- ===== iLog (Wear OS) ===== -->
+        <h2>
+            <span class="badge badge-child">자녀 앱</span>
+            iLog
+            <span class="badge badge-wear">Android Watch (Wear OS)</span>
+        </h2>
+
+        <p>iLog는 Android Watch에서 동작하며, 워치와 페어링된 스마트폰의 Wear OS 앱을 통해 권한을 관리합니다.</p>
+
+        <h3>위치 권한 — 항상 허용</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span>워치에서 <span class="path">설정</span> → <span class="path">앱</span> → <span class="path">iLog</span> 를 탭합니다.</span></li>
+            <li><span class="step-num">2</span><span><span class="path">권한</span> → <span class="path">위치</span> → <strong>항상 허용</strong>을 선택합니다.</span></li>
+        </ol>
+
+        <h3>배터리 최적화 제외 (Wear OS 3 이상)</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span>워치에서 <span class="path">설정</span> → <span class="path">앱</span> → <span class="path">iLog</span> → <span class="path">배터리</span> 를 탭합니다.</span></li>
+            <li><span class="step-num">2</span><span><strong>배터리 최적화 해제</strong>를 선택합니다.</span></li>
+        </ol>
+
+        <hr class="section-divider">
+
+        <!-- ===== iTrace Android ===== -->
+        <h2>
+            <span class="badge badge-parent">보호자 앱</span>
+            iTrace
+            <span class="badge badge-android">Android</span>
+        </h2>
+
+        <p>iTrace는 보호자가 지도를 보는 앱입니다. 백그라운드에서도 SOS 알림과 안심존 알림을 받으려면 아래 설정이 필요합니다.</p>
+
+        <h3>위치 권한 — 앱 사용 중 허용</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span><span class="path">설정</span> → <span class="path">앱</span> → <span class="path">iTrace</span> → <span class="path">권한</span> → <span class="path">위치</span> 를 탭합니다.</span></li>
+            <li><span class="step-num">2</span><span><strong>앱 사용 중에만 허용</strong> 이상을 선택합니다.</span></li>
+        </ol>
+
+        <h3>알림 권한</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span><span class="path">설정</span> → <span class="path">앱</span> → <span class="path">iTrace</span> → <span class="path">알림</span> 을 탭합니다.</span></li>
+            <li><span class="step-num">2</span><span><strong>알림 허용</strong>을 활성화합니다. (SOS · 안심존 알림 수신에 필수)</span></li>
+        </ol>
+
+        <hr class="section-divider">
+
+        <!-- ===== iTrace iOS ===== -->
+        <h2>
+            <span class="badge badge-parent">보호자 앱</span>
+            iTrace
+            <span class="badge badge-ios">iOS</span>
+        </h2>
+
+        <h3>위치 권한 — 앱 사용 중</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span><span class="path">설정</span> → <span class="path">iTrace</span> → <span class="path">위치</span> 를 탭합니다.</span></li>
+            <li><span class="step-num">2</span><span><strong>앱 사용 중</strong> 이상을 선택합니다.</span></li>
+        </ol>
+
+        <h3>알림 권한</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span><span><span class="path">설정</span> → <span class="path">iTrace</span> → <span class="path">알림</span> 을 탭합니다.</span></li>
+            <li><span class="step-num">2</span><span><strong>알림 허용</strong>을 활성화합니다.</span></li>
+            <li><span class="step-num">3</span><span>SOS 알림이 즉시 울리도록 <strong>소리</strong> 및 <strong>배너</strong>도 함께 활성화하는 것을 권장합니다.</span></li>
+        </ol>
+
+        <hr>
+
+        <!-- ===== 권한 요약표 ===== -->
+        <h2>권한 요약표</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>앱</th>
+                    <th>플랫폼</th>
+                    <th>위치</th>
+                    <th>배터리 최적화</th>
+                    <th>알림</th>
+                    <th>백그라운드 새로 고침</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>iLogMobile</td>
+                    <td>Android</td>
+                    <td><strong>항상 허용</strong></td>
+                    <td><strong>제한 없음</strong></td>
+                    <td>허용</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>iLogMobile</td>
+                    <td>iOS</td>
+                    <td><strong>항상</strong></td>
+                    <td>—</td>
+                    <td>허용</td>
+                    <td><strong>ON</strong></td>
+                </tr>
+                <tr>
+                    <td>iLog</td>
+                    <td>Wear OS</td>
+                    <td><strong>항상 허용</strong></td>
+                    <td>최적화 해제</td>
+                    <td>허용</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>iTrace</td>
+                    <td>Android</td>
+                    <td>앱 사용 중</td>
+                    <td>권장</td>
+                    <td><strong>허용 (SOS 필수)</strong></td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>iTrace</td>
+                    <td>iOS</td>
+                    <td>앱 사용 중</td>
+                    <td>—</td>
+                    <td><strong>허용 (SOS 필수)</strong></td>
+                    <td>권장</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+        <p style="text-align: center; color: #999;">문의: iveandor.support@gmail.com</p>
+    </div>
+</body>
+
+</html>
