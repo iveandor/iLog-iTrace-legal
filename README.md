@@ -22,4 +22,4 @@ iLogiTrace — 가족 위치 추적 시스템 (iLog / iTrace / iLogMobile)
 
 ## 문의
 
-iveandor.support@gmail.com
+dev+support@iveandor.com
