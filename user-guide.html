@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 가이드 — iLog / iTrace / iLogMobile</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            font-size: 26px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            font-size: 20px;
+            color: #007aff;
+            border-left: 4px solid #007aff;
+            padding-left: 12px;
+        }
+
+        h3 {
+            margin-top: 24px;
+            font-size: 17px;
+            color: #222;
+        }
+
+        h4 {
+            margin-top: 16px;
+            font-size: 15px;
+            color: #444;
+        }
+
+        p,
+        li {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .date {
+            text-align: right;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+
+        /* 배지 */
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .badge-itrace {
+            background: #e8eaf6;
+            color: #283593;
+        }
+
+        .badge-ilog {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .badge-mobile {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .badge-android {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-ios {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        /* 단계 목록 */
+        .steps {
+            list-style: none;
+            padding: 0;
+            margin: 14px 0;
+        }
+
+        .steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: #007aff;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        /* 정보 박스 */
+        .info-box {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .info-box.blue {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            color: #1a3a5c;
+        }
+
+        .info-box.green {
+            background: #e8f5e9;
+            border-left: 4px solid #388e3c;
+            color: #1b3d1d;
+        }
+
+        .info-box.orange {
+            background: #fff8e1;
+            border-left: 4px solid #f57c00;
+            color: #4a2e00;
+        }
+
+        .info-box.red {
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            color: #5a1010;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* 테이블 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 14px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+            color: #555;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* 목차 */
+        .toc {
+            background: #f5f7ff;
+            border: 1px solid #dde1f5;
+            border-radius: 8px;
+            padding: 20px 28px;
+            margin: 24px 0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #3949ab;
+            font-size: 16px;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .toc a {
+            color: #3949ab;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        /* 앱 역할 카드 */
+        .app-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .app-card {
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .app-card.itrace {
+            background: #e8eaf6;
+            border: 1px solid #c5cae9;
+        }
+
+        .app-card.ilog {
+            background: #f3e5f5;
+            border: 1px solid #e1bee7;
+        }
+
+        .app-card.mobile {
+            background: #fff3e0;
+            border: 1px solid #ffe0b2;
+        }
+
+        .app-card .app-icon {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        .app-card .app-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .app-card .app-desc {
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .app-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>iLog / iTrace 사용자 가이드</h1>
+        <p class="date">최종 수정일: 2026년 4월 15일</p>
+
+        <p>이 가이드는 가족 위치 추적 서비스 <strong>iLogiTrace</strong>의 시작부터 주요 기능까지 단계별로 안내합니다.</p>
+
+        <!-- 목차 -->
+        <div class="toc">
+            <h3>목차</h3>
+            <ol>
+                <li><a href="#apps">앱 소개 및 역할</a></li>
+                <li><a href="#signup">iTrace 회원가입</a></li>
+                <li><a href="#login">iTrace 로그인</a></li>
+                <li><a href="#pair-ilog">iLog (Galaxy Watch) 연동</a></li>
+                <li><a href="#pair-mobile">iLogMobile 연동</a></li>
+                <li><a href="#tracking">위치 추적</a></li>
+                <li><a href="#geofence">안심존</a></li>
+                <li><a href="#sos">SOS 긴급 알림</a></li>
+                <li><a href="#streaming">원격 모니터링 (스트리밍)</a></li>
+                <li><a href="#battery">배터리 절약 설정</a></li>
+                <li><a href="#history">위치 이력</a></li>
+                <li><a href="#device-manage">디바이스 관리 및 해지</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ol>
+        </div>
+
+        <!-- 1. 앱 소개 -->
+        <h2 id="apps">1. 앱 소개 및 역할</h2>
+
+        <div class="app-cards">
+            <div class="app-card itrace">
+                <div class="app-icon">👨‍👩‍👧</div>
+                <div class="app-name">iTrace</div>
+                <div class="app-desc">보호자(부모)용<br>위치 모니터링 앱<br>Android / iOS</div>
+            </div>
+            <div class="app-card ilog">
+                <div class="app-icon">⌚</div>
+                <div class="app-name">iLog</div>
+                <div class="app-desc">자녀용<br>Galaxy Watch 추적 앱<br>Wear OS</div>
+            </div>
+            <div class="app-card mobile">
+                <div class="app-icon">📱</div>
+                <div class="app-name">iLogMobile</div>
+                <div class="app-desc">자녀용<br>스마트폰 추적 앱<br>Android / iOS</div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>앱</th>
+                    <th>사용자</th>
+                    <th>주요 역할</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge badge-itrace">iTrace</span></td>
+                    <td>보호자(부모)</td>
+                    <td>지도에서 자녀 위치 실시간 확인, 안심존 설정, SOS 수신, 연동 코드 생성</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-ilog">iLog</span></td>
+                    <td>자녀 (Galaxy Watch 착용)</td>
+                    <td>위치 자동 수집·전송, SOS 발신, 갤럭시 워치에서 작동</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-mobile">iLogMobile</span></td>
+                    <td>자녀 (스마트폰 소지)</td>
+                    <td>위치 자동 수집·전송, SOS 발신, 원격 모니터링 오디오/영상 제공</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box blue">
+            <strong>시작 순서</strong>
+            보호자가 <strong>iTrace 회원가입 → 연동 코드 생성</strong> 후, 자녀의 기기(iLog 또는 iLogMobile)에서 코드를 입력하면 연동이 완료됩니다.
+        </div>
+
+        <hr>
+
+        <!-- 2. 회원가입 -->
+        <h2 id="signup">2. iTrace 회원가입</h2>
+        <p><span class="badge badge-itrace">iTrace</span> 보호자용 앱에서 처음 시작하는 단계입니다.</p>
+
+        <ol class="steps">
+            <li>
+                <span class="step-num">1</span>
+                <div>iTrace 앱을 실행합니다. 시작 화면에서 <strong>"회원가입"</strong> 버튼을 탭합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">2</span>
+                <div><strong>약관 동의 화면</strong>이 표시됩니다. 아래 3가지 항목에 모두 체크한 뒤 "전체 동의" 버튼을 탭합니다.
+                    <ul style="margin-top:6px;">
+                        <li>서비스 이용약관 (필수)</li>
+                        <li>개인정보 처리방침 (필수)</li>
+                        <li>위치정보 이용약관 (필수)</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <span class="step-num">3</span>
+                <div>Google 계정 선택 화면이 열립니다. 사용할 <strong>Google 계정</strong>을 선택합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">4</span>
+                <div>회원가입이 완료되어 <strong>메인 화면(지도)</strong>으로 이동합니다.</div>
+            </li>
+        </ol>
+
+        <div class="info-box green">
+            <strong>이미 계정이 있으신가요?</strong>
+            "회원가입" 대신 <strong>"로그인"</strong> 버튼을 탭하세요. 아래 섹션을 참고하세요.
+        </div>
+
+        <hr>
+
+        <!-- 3. 로그인 -->
+        <h2 id="login">3. iTrace 로그인</h2>
+
+        <ol class="steps">
+            <li>
+                <span class="step-num">1</span>
+                <div>iTrace 앱 시작 화면에서 <strong>"로그인"</strong> 버튼을 탭합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">2</span>
+                <div>Google 계정 선택 화면에서 가입 시 사용한 계정을 선택합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">3</span>
+                <div>계정 확인 후 메인 화면으로 이동합니다.</div>
+            </li>
+        </ol>
+
+        <div class="info-box orange">
+            <strong>로그인 오류: "회원가입을 하지 않았습니다."</strong>
+            선택한 Google 계정으로 가입된 iTrace 계정이 없을 때 표시됩니다. 해당 계정으로 먼저 <strong>회원가입</strong>을 진행하거나, 다른 Google 계정으로 다시 시도하세요.
+        </div>
+
+        <div class="info-box blue">
+            <strong>다른 기기에서 로그인하면?</strong>
+            iTrace는 계정당 <strong>활성 기기 1대</strong>만 지원합니다. 새 기기에서 로그인하면 이전 기기에서 자동으로 로그아웃됩니다.
+        </div>
+
+        <hr>
+
+        <!-- 4. iLog 연동 -->
+        <h2 id="pair-ilog">4. iLog (Galaxy Watch) 연동</h2>
+        <p>
+            <span class="badge badge-itrace">iTrace</span>
+            <span class="badge badge-ilog">iLog</span>
+            갤럭시 워치에 iLog가 설치된 경우 아래 순서로 연동합니다.
+        </p>
+
+        <div class="info-box orange">
+            <strong>사전 준비</strong>
+            Galaxy Watch에 iLog 앱이 설치되어 있어야 합니다. Galaxy Store에서 "iLog" 검색 후 설치하세요.
+        </div>
+
+        <h3>보호자(iTrace) 측 — 연동 코드 생성</h3>
+        <ol class="steps">
+            <li>
+                <span class="step-num">1</span>
+                <div>iTrace 앱 하단 탭에서 <strong>"설정"</strong>을 탭합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">2</span>
+                <div><strong>"자녀 앱 연동"</strong> 또는 <strong>"새 기기 추가"</strong>를 탭합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">3</span>
+                <div>화면에 <strong>6자리 영숫자 코드</strong>가 표시됩니다 (예: <code>A3KR7X</code>). 이 코드의 유효 시간은
+                    <strong>24시간</strong>입니다.</div>
+            </li>
+            <li>
+                <span class="step-num">4</span>
+                <div>코드를 자녀에게 알려주고, 자녀가 Galaxy Watch에서 코드를 입력할 때까지 화면을 유지합니다.</div>
+            </li>
+        </ol>
+
+        <h3>자녀(iLog — Galaxy Watch) 측 — 코드 입력</h3>
+        <ol class="steps">
+            <li>
+                <span class="step-num">1</span>
+                <div>Galaxy Watch에서 iLog 앱을 실행합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">2</span>
+                <div>처음 실행 시 <strong>연동 코드 입력 화면</strong>이 표시됩니다. 워치 화면의 키보드 또는 크라운을 이용해 <strong>보호자가 알려준 6자리
+                        코드</strong>를 입력합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">3</span>
+                <div>입력 완료 시 자동으로 연동이 처리됩니다. "연동 완료" 메시지가 표시되면 성공입니다.</div>
+            </li>
+            <li>
+                <span class="step-num">4</span>
+                <div>이후 iLog가 자동으로 위치 추적을 시작합니다.</div>
+            </li>
+        </ol>
+
+        <h3>iTrace에서 연동 확인</h3>
+        <p>코드 생성 화면에서 <strong>연동 완료 알림</strong>이 표시되거나, 설정 → 자녀 앱 목록에 새 워치가 나타나면 연동 성공입니다.</p>
+
+        <div class="info-box red">
+            <strong>코드 입력 오류</strong>
+            <ul style="margin:4px 0 0 16px; padding:0;">
+                <li><strong>"유효하지 않은 코드"</strong> — 코드가 잘못 입력되었거나 만료(24시간 초과)되었습니다. iTrace에서 새 코드를 생성하세요.</li>
+                <li><strong>"이미 사용된 코드"</strong> — 해당 코드는 이미 다른 기기에서 사용되었습니다. 새 코드를 생성하세요.</li>
+                <li><strong>"다른 계정에 연동된 기기"</strong> — 해당 워치가 다른 보호자 계정에 이미 연동되어 있습니다. 먼저 기존 계정에서 연동 해제 후 재시도하세요.</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <!-- 5. iLogMobile 연동 -->
+        <h2 id="pair-mobile">5. iLogMobile 연동</h2>
+        <p>
+            <span class="badge badge-itrace">iTrace</span>
+            <span class="badge badge-mobile">iLogMobile</span>
+            자녀 스마트폰에 iLogMobile이 설치된 경우 아래 순서로 연동합니다.
+        </p>
+
+        <div class="info-box orange">
+            <strong>사전 준비</strong>
+            자녀 스마트폰에 iLogMobile 앱을 설치하세요 (Play Store / App Store 검색). 앱 실행 후 Google 계정으로 로그인이 필요합니다.
+        </div>
+
+        <h3>보호자(iTrace) 측 — 연동 코드 생성</h3>
+        <p>iLog 연동과 동일합니다 (iTrace → 설정 → 자녀 앱 연동 → 6자리 코드 확인).</p>
+
+        <h3>자녀(iLogMobile) 측 — 코드 입력</h3>
+        <ol class="steps">
+            <li>
+                <span class="step-num">1</span>
+                <div>iLogMobile 앱을 실행하고 <strong>Google 계정으로 로그인</strong>합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">2</span>
+                <div>로그인 후 <strong>연동 코드 입력 화면</strong>이 표시됩니다. 보호자에게 받은 <strong>6자리 코드</strong>를 입력합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">3</span>
+                <div>"연동하기" 버튼을 탭합니다.</div>
+            </li>
+            <li>
+                <span class="step-num">4</span>
+                <div>연동 성공 시 <strong>메인 화면</strong>으로 이동하고, 위치 추적이 자동으로 시작됩니다.</div>
+            </li>
+        </ol>
+
+        <div class="info-box blue">
+            <strong>권한 요청 안내</strong>
+            처음 연동 후 위치, 알림, 배터리 최적화 제외 등 여러 권한 요청 화면이 나타납니다. 정상적인 추적을 위해 <strong>모든 권한을 허용</strong>해 주세요. 자세한 권한 설정은 <a
+                href="permissions-guide.html">기기 권한 설정 가이드</a>를 참고하세요.
+        </div>
+
+        <hr>
+
+        <!-- 6. 위치 추적 -->
+        <h2 id="tracking">6. 위치 추적</h2>
+
+        <h3>iTrace에서 자녀 위치 확인</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>메인 화면(지도)에서 연동된 자녀의 아이콘을 확인합니다.</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div>아이콘을 탭하면 <strong>최근 위치 시각, 배터리 잔량, 활동 상태</strong>가 표시됩니다.</div>
+            </li>
+            <li><span class="step-num">3</span>
+                <div><strong>"위치 확인하기"</strong> 버튼을 탭하면 자녀 기기에 즉시 위치 수집 요청을 보냅니다 (온디맨드 조회).</div>
+            </li>
+        </ol>
+
+        <div class="info-box blue">
+            <strong>추적이 멈춘 것 같다면?</strong>
+            자녀 기기의 배터리 절약 모드, 백그라운드 제한, 인터넷 연결 상태를 확인하세요. iTrace 설정 → 해당 기기 → 진단 정보에서 마지막 업로드 시각을 확인할 수 있습니다.
+        </div>
+
+        <hr>
+
+        <!-- 7. 안심존 -->
+        <h2 id="geofence">7. 안심존</h2>
+        <p>특정 장소(학교, 집 등)에 가상 경계선을 설정하고, 자녀가 <strong>진입하거나 이탈할 때 알림</strong>을 받습니다.</p>
+
+        <h3>안심존 추가</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>iTrace 앱에서 지도에서 안심존을 설정할 자녀를 선택합니다.</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div><strong>"안심존"</strong> 탭 또는 지도 내 메뉴에서 <strong>"안심존 추가"</strong>를 탭합니다.</div>
+            </li>
+            <li><span class="step-num">3</span>
+                <div>지도에서 중심 위치를 지정하거나 주소를 검색합니다.</div>
+            </li>
+            <li><span class="step-num">4</span>
+                <div>반경(미터)을 조정하고, <strong>진입 알림 / 이탈 알림</strong> 여부를 선택합니다.</div>
+            </li>
+            <li><span class="step-num">5</span>
+                <div>장소 이름을 입력하고 저장합니다.</div>
+            </li>
+        </ol>
+
+        <h3>알림 방식</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>이벤트</th>
+                    <th>알림 대상</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>안심존 진입</td>
+                    <td>보호자 (iTrace)</td>
+                    <td>"[자녀 이름]이 [장소명] 영역에 진입했습니다."</td>
+                </tr>
+                <tr>
+                    <td>안심존 이탈</td>
+                    <td>보호자 (iTrace)</td>
+                    <td>"[자녀 이름]이 [장소명] 영역에서 이탈했습니다."</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box orange">
+            <strong>안심존 알림이 오지 않을 때</strong>
+            iTrace 알림 권한이 허용되어 있는지 확인하세요. 기기 설정 → 앱 → iTrace → 알림 → 허용.
+        </div>
+
+        <hr>
+
+        <!-- 8. SOS -->
+        <h2 id="sos">8. SOS 긴급 알림</h2>
+        <p>자녀가 위험 상황에서 SOS를 발신하면 보호자에게 <strong>즉시 긴급 알림</strong>이 전송됩니다.</p>
+
+        <h3>SOS 발신 방법</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>기기</th>
+                    <th>발신 방법</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge badge-ilog">iLog (Galaxy Watch)</span></td>
+                    <td>iLog 앱 화면에서 SOS 버튼을 <strong>2초 이상 길게 누르기</strong></td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-mobile">iLogMobile</span></td>
+                    <td>iLogMobile 메인 화면에서 SOS 버튼을 <strong>2초 이상 길게 누르기</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>SOS 발신 시 동작</h3>
+        <ul>
+            <li>GPS 위치 수집 주기가 <strong>10초</strong>로 강제 전환</li>
+            <li>iTrace 앱에 <strong>빨간색 긴급 알림 배너</strong> 표시 + 해당 위치로 지도 자동 이동</li>
+            <li>주변 음성이 <strong>자동 녹음</strong>되어 iTrace에서 재생 가능</li>
+            <li>SOS는 발신 후 <strong>5분 후 자동 해제</strong> (또는 보호자가 iTrace에서 수동 해제 가능)</li>
+            <li>iLog는 SOS 중 화면 최대 밝기 유지 + 사이렌 재생 (설정에서 ON/OFF)</li>
+        </ul>
+
+        <div class="info-box red">
+            <strong>SOS 알림이 도달하지 않을 때</strong>
+            iTrace 앱의 알림 권한 및 FCM 토큰이 유효한지 확인하세요. 앱을 완전히 종료 후 재시작하면 FCM 토큰이 갱신됩니다.
+        </div>
+
+        <hr>
+
+        <!-- 9. 스트리밍 -->
+        <h2 id="streaming">9. 원격 모니터링 (스트리밍)</h2>
+        <p>
+            <span class="badge badge-itrace">iTrace</span>
+            <span class="badge badge-mobile">iLogMobile</span>
+            iLogMobile이 연동된 경우, 보호자가 자녀의 주변 <strong>오디오 또는 영상</strong>을 실시간으로 확인할 수 있습니다.
+        </p>
+
+        <div class="info-box orange">
+            <strong>주의</strong>
+            원격 모니터링 기능은 반드시 자녀의 동의 하에 사용해야 합니다. 무단 도청·촬영은 법적으로 금지됩니다.
+        </div>
+
+        <h3>사용 방법</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>iTrace 앱에서 모니터링할 자녀 기기를 선택합니다.</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div><strong>"원격 모니터링"</strong> 버튼을 탭합니다.</div>
+            </li>
+            <li><span class="step-num">3</span>
+                <div>모니터링 유형을 선택합니다: <strong>오디오만</strong> 또는 <strong>오디오+영상</strong> (iLogMobile에서만 지원).</div>
+            </li>
+            <li><span class="step-num">4</span>
+                <div>자녀 기기에 요청이 전송되고, 세션이 시작되면 iTrace에서 재생이 시작됩니다.</div>
+            </li>
+            <li><span class="step-num">5</span>
+                <div>종료하려면 <strong>"중지"</strong> 버튼을 탭합니다.</div>
+            </li>
+        </ol>
+
+        <div class="info-box blue">
+            <strong>iLog(Galaxy Watch)는 스트리밍 불가</strong>
+            갤럭시 워치에는 카메라가 없어 오디오+영상 스트리밍이 지원되지 않습니다. 스트리밍은 iLogMobile 전용 기능입니다.
+        </div>
+
+        <hr>
+
+        <!-- 10. 배터리 절약 -->
+        <h2 id="battery">10. 배터리 절약 설정</h2>
+        <p>자녀 기기의 배터리 소모를 줄이기 위해 <strong>시간대별 GPS 수집 주기</strong>를 조정할 수 있습니다.</p>
+
+        <h3>설정 방법</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>iTrace 앱 → 설정 → 해당 자녀 기기 선택</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div><strong>"배터리 절약"</strong>을 탭합니다.</div>
+            </li>
+            <li><span class="step-num">3</span>
+                <div>야간 절약 시간대(예: 오후 11시 ~ 오전 7시)를 설정하고, 해당 시간대의 수집 주기를 조정합니다.</div>
+            </li>
+            <li><span class="step-num">4</span>
+                <div>저장하면 변경 사항이 자녀 기기에 즉시 반영됩니다.</div>
+            </li>
+        </ol>
+
+        <h3>자동 배터리 보호</h3>
+        <p>설정과 무관하게 자녀 기기 배터리 잔량에 따라 자동으로 GPS 정밀도를 조절합니다:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>배터리 잔량</th>
+                    <th>GPS 모드</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>20% 초과</td>
+                    <td>고정밀 (HIGH_ACCURACY)</td>
+                </tr>
+                <tr>
+                    <td>5~20%</td>
+                    <td>균형 (BALANCED_POWER)</td>
+                </tr>
+                <tr>
+                    <td>5% 이하</td>
+                    <td>저전력 (LOW_POWER)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box green">
+            <strong>배터리 부족 알림</strong>
+            자녀 기기 배터리가 일정 수준 이하로 떨어지면 보호자에게 푸시 알림이 발송됩니다.
+        </div>
+
+        <hr>
+
+        <!-- 11. 위치 이력 -->
+        <h2 id="history">11. 위치 이력</h2>
+        <p>iTrace에서 자녀의 과거 이동 경로를 날짜별로 확인할 수 있습니다.</p>
+
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>iTrace 메인 화면에서 <strong>"이력"</strong> 탭을 탭합니다.</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div>조회할 자녀를 선택하고 날짜를 선택합니다.</div>
+            </li>
+            <li><span class="step-num">3</span>
+                <div>지도에 해당 날짜의 이동 경로가 <strong>Polyline</strong>으로 표시됩니다.</div>
+            </li>
+            <li><span class="step-num">4</span>
+                <div>경로 위 점을 탭하면 해당 시각의 위치 정보를 확인할 수 있습니다.</div>
+            </li>
+        </ol>
+
+        <div class="info-box blue">
+            <strong>이력 보관 기간</strong>
+            위치 이력은 설정된 기간(기본값: 30일) 이후 자동으로 삭제됩니다.
+        </div>
+
+        <hr>
+
+        <!-- 12. 디바이스 관리 -->
+        <h2 id="device-manage">12. 디바이스 관리 및 해지</h2>
+
+        <h3>연동된 기기 목록 확인</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>iTrace 앱 → <strong>설정</strong> → <strong>"연동된 기기"</strong> 탭</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div>현재 연동된 iLog / iLogMobile 기기 목록이 표시됩니다.</div>
+            </li>
+            <li><span class="step-num">3</span>
+                <div>각 기기의 마지막 접속 시각, 배터리, 앱 유형을 확인할 수 있습니다.</div>
+            </li>
+        </ol>
+
+        <h3>기기 이름 변경</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>기기 목록에서 이름을 변경할 기기를 탭합니다.</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div><strong>"이름 수정"</strong>을 탭하고 새 이름을 입력 후 저장합니다.</div>
+            </li>
+        </ol>
+
+        <h3>연동 해지</h3>
+        <ol class="steps">
+            <li><span class="step-num">1</span>
+                <div>기기 목록에서 해지할 기기를 탭합니다.</div>
+            </li>
+            <li><span class="step-num">2</span>
+                <div><strong>"연동 해지"</strong> 버튼을 탭합니다.</div>
+            </li>
+            <li><span class="step-num">3</span>
+                <div>확인 다이얼로그에서 <strong>"해지"</strong>를 탭합니다.</div>
+            </li>
+            <li><span class="step-num">4</span>
+                <div>해지 시 해당 기기의 모든 위치 이력, 안심존 데이터가 삭제되며, 자녀 기기에 연동 해제 알림이 전송됩니다.</div>
+            </li>
+        </ol>
+
+        <div class="info-box red">
+            <strong>연동 해지는 되돌릴 수 없습니다</strong>
+            해지 후 모든 데이터가 영구 삭제됩니다. 재연동이 필요한 경우 새 코드를 생성하여 처음부터 다시 연동해야 합니다.
+        </div>
+
+        <h3>자녀 기기에서 연동 해제됐을 때</h3>
+        <p>보호자가 연동을 해지하면 자녀의 iLog / iLogMobile 앱에 알림이 표시되고, 앱은 자동으로 <strong>연동 코드 입력 화면</strong>으로 이동합니다. 이후 재연동 전까지 위치
+            추적이 중단됩니다.</p>
+
+        <hr>
+
+        <!-- 13. FAQ -->
+        <h2 id="faq">13. 자주 묻는 질문</h2>
+
+        <h3>Q. 자녀 기기가 여러 대인데 모두 연동할 수 있나요?</h3>
+        <p>네. iTrace 하나의 계정에 여러 기기(iLog + iLogMobile 혼합)를 연동할 수 있습니다. 각 기기마다 독립된 위치 이력과 안심존이 관리됩니다. 단, 계정 구독 플랜에 따라 연동
+            가능한 기기 수 제한이 있을 수 있습니다.</p>
+
+        <h3>Q. 자녀 기기를 교체했을 때 어떻게 하나요?</h3>
+        <p>기존 기기는 설정에서 <strong>연동 해지</strong>한 후, 새 기기에 iLog 또는 iLogMobile을 설치하고 새 코드로 재연동하세요.</p>
+
+        <h3>Q. 위치가 업데이트되지 않아요.</h3>
+        <p>아래 순서로 확인하세요:</p>
+        <ol>
+            <li>자녀 기기의 인터넷(Wi-Fi 또는 모바일 데이터) 연결 상태를 확인합니다.</li>
+            <li>iLog / iLogMobile 앱이 백그라운드에서 실행 중인지 확인합니다.</li>
+            <li>배터리 최적화 예외 설정이 되어 있는지 확인합니다 (<a href="permissions-guide.html">권한 설정 가이드</a> 참고).</li>
+            <li>iTrace에서 "위치 확인하기" 버튼으로 즉시 수집을 요청합니다.</li>
+        </ol>
+
+        <h3>Q. 야간에 위치 업데이트가 너무 뜸해요.</h3>
+        <p>배터리 절약 설정에서 야간 시간대 수집 주기를 단축하거나, 야간 절약 모드를 비활성화하세요 (iTrace → 설정 → 해당 기기 → 배터리 절약).</p>
+
+        <h3>Q. SOS 알림을 받지 못했어요.</h3>
+        <p>iTrace 앱의 알림 권한을 확인하고, 앱을 재시작하여 FCM 토큰을 갱신해 보세요. 재시작 후에도 문제가 지속되면 기기 설정 → 앱 → iTrace → 알림 → 허용 여부를 확인하세요.</p>
+
+        <h3>Q. 보호자 계정을 삭제하고 싶어요.</h3>
+        <p>iTrace 앱 → 설정 → 계정 → <strong>"계정 삭제"</strong>를 통해 탈퇴할 수 있습니다. 탈퇴 시 모든 연동 기기, 위치 이력, 안심존 데이터가 영구 삭제됩니다.</p>
+
+        <hr>
+
+        <p style="text-align:center; font-size:13px; color:#999; margin-top:40px;">
+            문의: 앱 내 설정 → 고객지원 또는 Google Play / App Store 리뷰를 통해 문의해 주세요.<br>
+            &copy; 2026 iLogiTrace. All rights reserved.
+        </p>
+
+    </div>
+</body>
+
+</html>
