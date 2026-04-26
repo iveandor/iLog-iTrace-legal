@@ -78,7 +78,7 @@
 
 <body>
     <div class="container">
-        <p class="date">최종 수정일: 2026년 4월 19일 · 시행일: 2026년 3월 18일</p>
+        <p class="date">최종 수정일: 2026년 4월 26일 · 시행일: 2026년 3월 18일</p>
         <h1>개인정보 처리방침</h1>
 
         <p>강일구(이하 "회사")는 iLog · iTrace · iLogMobile 서비스(이하 "서비스") 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」 및 「위치정보의 보호 및 이용 등에 관한
@@ -124,8 +124,13 @@
                 </tr>
                 <tr>
                     <td>원격 모니터링 파일 (선택)</td>
-                    <td>보호자 요청에 의해 수집된 음성 파일(m4a) 또는 영상 파일(mp4)</td>
-                    <td>iTrace 보호자 요청 → iLogMobile 자동 녹음/녹화</td>
+                    <td>보호자 요청에 의해 수집된 음성 파일 (m4a)</td>
+                    <td>iTrace 보호자 요청 → iLogMobile 자동 녹음</td>
+                </tr>
+                <tr>
+                    <td>구독 및 결제 정보</td>
+                    <td>구독 상태, 구독 플랜, 구독 만료일, 앱 스토어 구매 식별자(Transaction ID)</td>
+                    <td>iTrace 앱 통해 App Store / Google Play 결제 완료 시 자동 수집</td>
                 </tr>
                 <tr>
                     <td>오류·충돌 정보</td>
@@ -144,11 +149,12 @@
                 <li>이동 경로 이력 저장 및 조회 기능 제공</li>
                 <li>안심존(지오펜스) 진입·이탈 알림 서비스</li>
                 <li>SOS 긴급 알림 발송 및 보호자 통보</li>
-                <li>원격 음성/영상 모니터링 기능 제공 (iLogMobile 기기에 한함)</li>
+                <li>원격 음성 모니터링 기능 제공 (iLogMobile 기기에 한함)</li>
                 <li>위치 수집 주기 원격 동기화</li>
                 <li>기기 무신호 감지 알림 제공 (6시간 이상 위치 미수신 시 보호자에게 알림)</li>
                 <li>앱 오류·충돌 분석 및 안정성 개선</li>
                 <li>서비스 이용 현황 분석 및 품질 개선</li>
+                <li>구독 유효성 확인 및 서비스 이용 권한 관리</li>
                 <li>앱 내 고객 문의 응대</li>
             </ul>
         </section>
@@ -185,12 +191,16 @@
                     <td>수집 후 10일 (DynamoDB TTL 자동 삭제)</td>
                 </tr>
                 <tr>
-                    <td>원격 모니터링 파일 (음성/영상)</td>
+                    <td>원격 모니터링 파일 (음성)</td>
                     <td>수집 후 10일 (S3 lifecycle 자동 삭제). 이용자 직접 삭제 또는 회원 탈퇴 시 즉시 삭제 가능</td>
                 </tr>
                 <tr>
                     <td>원격 모니터링 세션 기록</td>
                     <td>수집 후 10일 (DynamoDB TTL 자동 삭제)</td>
+                </tr>
+                <tr>
+                    <td>구독 및 결제 정보</td>
+                    <td>회원 탈퇴 시까지 (앱 스토어 환불 처리 등 정산 목적으로 탈퇴 후 최대 30일 보관 가능)</td>
                 </tr>
                 <tr>
                     <td>초대 코드 정보</td>
@@ -224,12 +234,22 @@
                 </tr>
                 <tr>
                     <td>Amazon Web Services (AWS)</td>
-                    <td>DynamoDB 위치 이력 저장, Lambda REST API, S3 음성·영상 파일 저장, CloudFront CDN</td>
+                    <td>DynamoDB 위치 이력 저장, Lambda REST API, S3 음성 파일 저장, CloudFront CDN</td>
                     <td>위탁 계약 종료 시까지</td>
                 </tr>
                 <tr>
                     <td>Google Firebase Crashlytics (Google LLC)</td>
                     <td>앱 오류·충돌 로그 수집 및 분석</td>
+                    <td>위탁 계약 종료 시까지</td>
+                </tr>
+                <tr>
+                    <td>Apple Inc. (App Store)</td>
+                    <td>iOS 인앱 구독 결제 처리 및 구독 상태 관리</td>
+                    <td>위탁 계약 종료 시까지</td>
+                </tr>
+                <tr>
+                    <td>Google LLC (Google Play)</td>
+                    <td>Android 인앱 구독 결제 처리 및 구독 상태 관리</td>
                     <td>위탁 계약 종료 시까지</td>
                 </tr>
             </table>
@@ -241,7 +261,7 @@
             <ul>
                 <li><strong>전자적 파일</strong>: 복원 불가능한 방법으로 영구 삭제</li>
                 <li><strong>DynamoDB TTL</strong>: 설정된 만료 시간에 자동 삭제</li>
-                <li><strong>S3 파일 (음성·영상)</strong>: 수집 후 10일 경과 시 S3 lifecycle rule에 의해 자동 삭제; 탈퇴 요청 시 즉시 삭제 처리</li>
+                <li><strong>S3 파일 (음성)</strong>: 수집 후 10일 경과 시 S3 lifecycle rule에 의해 자동 삭제; 탈퇴 요청 시 즉시 삭제 처리</li>
             </ul>
         </section>
 
@@ -253,7 +273,7 @@
                 <li><strong>삭제</strong>: 앱 설정 → "위치 기록 삭제" 기능 이용</li>
                 <li><strong>회원 탈퇴</strong>: 앱 설정 → "계정 삭제"로 모든 데이터 즉시 삭제</li>
                 <li><strong>수집 중단</strong>: 앱에서 추적 중지 또는 위치 권한 거부</li>
-                <li><strong>이메일 요청</strong>: iveandor.support@gmail.com으로 서면 요청 (7영업일 이내 처리)</li>
+                <li><strong>이메일 요청</strong>: support@iveandor.com으로 서면 요청 (7영업일 이내 처리)</li>
             </ul>
         </section>
 
@@ -261,7 +281,7 @@
             <h2>제8조 (개인정보 보호책임자)</h2>
             <ul>
                 <li>성명: 강일구</li>
-                <li>이메일: iveandor.support@gmail.com</li>
+                <li>이메일: support@iveandor.com</li>
             </ul>
             <p>개인정보 침해 관련 신고·상담은 개인정보침해 신고센터 웹사이트(privacy.kisa.or.kr)를 통해 문의하실 수 있습니다.</p>
         </section>
@@ -272,7 +292,7 @@
         </section>
 
         <hr>
-        <p style="text-align: center; color: #999;">문의: iveandor.support@gmail.com</p>
+        <p style="text-align: center; color: #999;">문의: support@iveandor.com</p>
     </div>
 </body>
 
