@@ -78,7 +78,7 @@
 
 <body>
     <div class="container">
-        <p class="date">최종 수정일: 2026년 4월 26일 · 시행일: 2026년 3월 18일</p>
+        <p class="date">최종 수정일: 2026년 4월 28일 · 시행일: 2026년 3월 18일</p>
         <h1>개인정보 처리방침</h1>
 
         <p>강일구(이하 "회사")는 iLog · iTrace · iLogMobile 서비스(이하 "서비스") 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」 및 「위치정보의 보호 및 이용 등에 관한
@@ -118,14 +118,14 @@
                     <td>이용자 직접 트리거 또는 앱 자동 감지</td>
                 </tr>
                 <tr>
-                    <td>SOS 음성 녹음 (선택)</td>
-                    <td>SOS 상황 시 녹음된 음성 파일 (m4a)</td>
-                    <td>iLogMobile 자동 녹음 (SOS 발생 시)</td>
+                    <td>SOS 음성·영상 녹음 (선택)</td>
+                    <td>iLog: SOS 상황 시 녹음된 음성 파일 (m4a) / iLogMobile: SOS 상황 시 녹화된 영상+음성 파일 (mp4)</td>
+                    <td>iLog · iLogMobile 자동 녹음/녹화 (SOS 발생 시)</td>
                 </tr>
                 <tr>
                     <td>원격 모니터링 파일 (선택)</td>
-                    <td>보호자 요청에 의해 수집된 음성 파일 (m4a)</td>
-                    <td>iTrace 보호자 요청 → iLogMobile 자동 녹음</td>
+                    <td>보호자 요청에 의해 수집된 음성 파일 (aac) 또는 영상+음성 파일 (mp4)</td>
+                    <td>iTrace 보호자 요청 → iLogMobile 자동 녹음/녹화</td>
                 </tr>
                 <tr>
                     <td>구독 및 결제 정보</td>
@@ -138,8 +138,9 @@
                     <td>Firebase Crashlytics 자동 수집 (앱 비정상 종료 시)</td>
                 </tr>
             </table>
-            <p>* Android Watch(iLog)는 별도 회원가입 없이 Firebase 익명 인증(Anonymous UID)을 사용합니다.</p>
-            <p>* SOS 음성 녹음 및 원격 모니터링은 iLogMobile(스마트폰) 전용 기능입니다. Android Watch(iLog)는 해당 기능을 지원하지 않습니다.</p>
+            <p>* Android Watch(iLog)는 별도 회원가입 없이 Galaxy Watch에 연결된 Google 계정(Silent Google Sign-In)으로 자동 인증됩니다.</p>
+            <p>* iLog(Galaxy Watch)는 SOS 발생 시 주변 음성만 녹음합니다. iLogMobile(스마트폰)은 SOS 발생 시 주변 영상+음성을 녹화합니다.</p>
+            <p>* 원격 모니터링(스트리밍)은 iLogMobile(스마트폰) 전용 기능입니다. Android Watch(iLog)는 지원하지 않습니다.</p>
         </section>
 
         <section>
@@ -191,12 +192,12 @@
                     <td>수집 후 10일 (DynamoDB TTL 자동 삭제)</td>
                 </tr>
                 <tr>
-                    <td>원격 모니터링 파일 (음성)</td>
+                    <td>원격 모니터링 파일 (음성·영상)</td>
                     <td>수집 후 10일 (S3 lifecycle 자동 삭제). 이용자 직접 삭제 또는 회원 탈퇴 시 즉시 삭제 가능</td>
                 </tr>
                 <tr>
                     <td>원격 모니터링 세션 기록</td>
-                    <td>수집 후 10일 (DynamoDB TTL 자동 삭제)</td>
+                    <td>수집 후 90일 (DynamoDB TTL 자동 삭제)</td>
                 </tr>
                 <tr>
                     <td>구독 및 결제 정보</td>
