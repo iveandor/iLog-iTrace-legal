@@ -4,9 +4,8 @@ iLog · iTrace · iLogMobile 앱의 법적 약관 페이지를 호스팅하는 G
 
 ## 페이지 URL
 
-- **위치기반서비스 이용약관**: https://iveandor.github.io/iLog-iTrace-legal/location.html
-- **개인정보 처리방침**: https://iveandor.github.io/iLog-iTrace-legal/privacy.html
-- **서비스 이용약관**: https://iveandor.github.io/iLog-iTrace-legal/service.html
+- **이용약관**: https://iveandor.github.io/iLog-iTrace-legal/terms_of_use.html
+- **개인정보 처리방침**: https://iveandor.github.io/iLog-iTrace-legal/privacy_policy.html
 - **사용자 가이드**: https://iveandor.github.io/iLog-iTrace-legal/user-guide.html
 - **기기 권한 설정 가이드**: https://iveandor.github.io/iLog-iTrace-legal/permissions-guide.html
 
@@ -14,9 +13,8 @@ iLog · iTrace · iLogMobile 앱의 법적 약관 페이지를 호스팅하는 G
 
 | 파일 | 설명 |
 |------|------|
-| `location.html` | 위치기반서비스 이용약관 |
-| `privacy.html` | 개인정보 처리방침 |
-| `service.html` | 서비스 이용약관 |
+| `terms_of_use.html` | 이용약관 (서비스 이용약관 + 위치기반서비스 이용약관) |
+| `privacy_policy.html` | 개인정보 처리방침 |
 | `user-guide.html` | 사용자 가이드 |
 | `permissions-guide.html` | 기기 권한 설정 가이드 |
 
